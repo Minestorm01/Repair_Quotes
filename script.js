@@ -1,20 +1,15 @@
 let currentSlide = 0;
 const slider = document.getElementById('slider');
-const slides = document.querySelectorAll('.slide');
+const totalSlides = document.querySelectorAll('.slide').length;
 const prevArrow = document.getElementById('prev');
 const nextArrow = document.getElementById('next');
 
-// Function to move the slider and manage arrow visibility
-function moveSlide(direction) {
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    const offset = -currentSlide * 100;
-    slider.style.transform = `translateX(${offset}vw)`;
-    
-    // Toggle arrow visibility
+// Initial display of arrows based on slide index
+function displayArrows() {
     if (currentSlide === 0) {
         prevArrow.style.display = 'none';
         nextArrow.style.display = 'block';
-    } else if (currentSlide === slides.length - 1) {
+    } else if (currentSlide === totalSlides - 1) {
         prevArrow.style.display = 'block';
         nextArrow.style.display = 'none';
     } else {
@@ -23,12 +18,29 @@ function moveSlide(direction) {
     }
 }
 
-// Initial setup for arrows on first slide
-document.addEventListener('DOMContentLoaded', function() {
-    slider.style.transform = 'translateX(0vw)';
-    prevArrow.style.display = 'none';
-    nextArrow.style.display = slides.length > 1 ? 'block' : 'none';
+// Event listener for next button
+nextArrow.addEventListener('click', function() {
+    if (currentSlide < totalSlides - 1) {
+        currentSlide += 1;
+        slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    }
+    displayArrows();
 });
+
+// Event listener for previous button
+prevArrow.addEventListener('click', function() {
+    if (currentSlide > 0) {
+        currentSlide -= 1;
+        slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    }
+    displayArrows();
+});
+
+// Initialize slider position and arrows on page load
+window.onload = function() {
+    slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    displayArrows();
+};
 // Dana Quotes calculation
 function calculateDana() {
     const letterToNumber = {
