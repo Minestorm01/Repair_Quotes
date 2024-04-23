@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <div id="slider">
+    
+    <!-- Dana Quote Section -->
+    <div class="slide">
+        <div class="container">
+            <h1 class="title">Dana Quote Calculator</h1>
+            <div id="outputDana" class="output">Let's get that Quote!!</div>
+            <input type="text" id="letter1Dana" class="input" placeholder="First Letter">
+            <input type="text" id="letter2Dana" class="input" placeholder="Second Letter">
+            <!-- Dana Calculate Button -->
+            <button id="calculateButtonDana" onclick="calculateDana()" class="button">Calculate</button>
+        </div>
+    </div>
+    
+    <!-- Watch Quotes Section -->
+    <div class="slide">
+        <div class="container">
+            <h1 class="title">Watch Quotes Calculator</h1>
+            <div id="outputWatch" class="output">Your quote will appear here!</div>
+            <input type="number" id="quoteInputWatch" class="input" placeholder="Enter quote amount">
+            <!-- Watch Calculate Button -->
+            <button id="calculateButtonWatch" onclick="calculateWatch()" class="button">Calculate</button>
+            <p class="caption">In POS, type SKU 9049116 for watch repair quotes.</p>
+        </div>
+    </div>
+
+</div>
+
+    <!-- Controls -->
+    <button id="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button id="next" onclick="moveSlide(1)">&#10095;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
