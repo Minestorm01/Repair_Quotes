@@ -4,37 +4,41 @@ const totalSlides = document.querySelectorAll('.slide').length;
 const prevArrow = document.getElementById('prev');
 const nextArrow = document.getElementById('next');
 
-// Initial display of arrows based on slide index
-function displayArrows() {
-    if (currentSlide === 0) {
-        prevArrow.style.display = 'none';
-        nextArrow.style.display = 'block';
-    } else if (currentSlide === totalSlides - 1) {
-        prevArrow.style.display = 'block';
-        nextArrow.style.display = 'none';
-    } else {
-        prevArrow.style.display = 'block';
+// Initialize the slider position when the page loads
+window.onload = function() {
+    // Start at the first slide
+    slider.style.transform = 'translateX(0vw)';
+    // Hide the left arrow since we're at the first slide
+    prevArrow.style.display = 'none';
+    // If there are multiple slides, show the right arrow
+    if (totalSlides > 1) {
         nextArrow.style.display = 'block';
     }
-}
+};
 
-// Event listener for next button
+// Add event listeners for the next and previous arrows
 nextArrow.addEventListener('click', function() {
     if (currentSlide < totalSlides - 1) {
-        currentSlide += 1;
+        currentSlide++;
         slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        prevArrow.style.display = 'block';
+        if (currentSlide === totalSlides - 1) {
+            nextArrow.style.display = 'none';
+        }
     }
-    displayArrows();
 });
 
-// Event listener for previous button
 prevArrow.addEventListener('click', function() {
     if (currentSlide > 0) {
-        currentSlide -= 1;
+        currentSlide--;
         slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        nextArrow.style.display = 'block';
+        if (currentSlide === 0) {
+            prevArrow.style.display = 'none';
+        }
     }
-    displayArrows();
 });
+
 
 // Initialize slider position and arrows on page load
 window.onload = function() {
