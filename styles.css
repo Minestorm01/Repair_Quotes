@@ -1,44 +1,48 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'EB Garamond', serif;
-    background-color: #0D1431;
-    color: #CDDEF2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    background-image: url('Web-browser.png');
-    background-size: cover;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and borders in total width and height */
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'EB Garamond', serif;
+  background-color: #0D1431; /* Dark blue background */
+  color: #CDDEF2; /* Light blue text color */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #slider {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 200vw; /* Ensure this matches the number of slides you have */
-    height: 100vh;
-    position: relative; /* Relative to the viewport */
+  display: flex;
+  width: 200vw; /* 100vw for each slide */
+  min-height: 100vh; /* At least the height of the viewport */
+  transition: transform 0.5s ease;
+  overflow: hidden; /* Prevent horizontal scroll */
 }
 
 .slide {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent the flex items from shrinking */
 }
 
 .container {
-    background-color: #1c1c1e;
-    padding: 20px;
-    border-radius: 10px;
-    width: auto; /* Let the width be determined by its content, up to max-width */
-    max-width: 300px; /* Adjust max-width based on design preference */
-    margin: auto; /* Center in the available space */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    text-align: center; /* Center text inside the container */
+  background-color: #1c1c1e; /* Slightly lighter than the background for visibility */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 300px; /* Adjust as necessary */
 }
+
 .title, .output, .input, .button, .caption {
     font-family: 'EB Garamond', serif;
     color: #CDDEF2;
